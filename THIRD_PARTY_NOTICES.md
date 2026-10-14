@@ -31,4 +31,4 @@ SOFTWARE.
 
 ## Trademarks
 
-Philips and Hue are trademarks of Signify. HueMenubar is an independent project and is not affiliated with, endorsed by or sponsored by Signify or Philips.
+Philips and Hue are trademarks of Signify. Glowdesk is an independent project and is not affiliated with, endorsed by or sponsored by Signify or Philips.

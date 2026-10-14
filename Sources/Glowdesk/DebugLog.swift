@@ -5,7 +5,7 @@ import Foundation
 enum DebugLog {
     static let enabled = CommandLine.arguments.contains("--log")
     static let url = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-        .appendingPathComponent("local.HueMenubar/debug.log")
+        .appendingPathComponent("Glowdesk/debug.log")
     private static let queue = DispatchQueue(label: "hue.debuglog")
     private static let stamp: DateFormatter = { let f = DateFormatter(); f.dateFormat = "HH:mm:ss.SSS"; return f }()
 

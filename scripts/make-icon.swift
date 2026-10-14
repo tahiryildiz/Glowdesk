@@ -1,4 +1,4 @@
-// Draws the HueMenubar app icon: three light-desk faders on a warm graphite tile.
+// Draws the Glowdesk app icon: three light-desk faders on a warm graphite tile.
 // Usage: swift scripts/make-icon.swift <output-dir>
 // Writes AppIcon-1024.png and AppIcon.icns (via iconutil) into <output-dir>.
 import AppKit

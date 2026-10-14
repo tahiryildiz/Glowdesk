@@ -58,7 +58,7 @@ enum L10n {
         "Software": "Yazılım", "Address": "Adres", "Certificate": "Sertifika", "Forget bridge": "Köprüyü unut",
         "Language": "Dil", "System": "Sistem", "Open at login": "Mac açılınca başlat",
         // Menu bar
-        "About HueMenubar": "HueMenubar Hakkında", "Buy me a coffee": "Bana bir kahve ısmarla", "Quit HueMenubar": "HueMenubar'dan Çık",
+        "About Glowdesk": "Glowdesk Hakkında", "Buy me a coffee": "Bana bir kahve ısmarla", "Quit Glowdesk": "Glowdesk'ten Çık",
         "Lights on": "Işıklar açık", "Lights off": "Işıklar kapalı",
         "Scroll to dim or brighten your lights": "Işıkları kısmak ya da açmak için kaydır",
         "Your Philips Hue lights, in the menu bar.\nTalks to your bridge over the local network only.\nNot affiliated with Philips or Signify.":
@@ -72,8 +72,8 @@ enum L10n {
         "The bridge button wasn't pressed within 45 seconds. Try again.": "45 saniye içinde köprü düğmesine basılmadı. Tekrar dene.",
         "Pairing removed. You can also revoke this Mac's access in the Hue app.": "Eşleştirme silindi. Bu Mac'in erişimini Hue uygulamasından da kaldırabilirsin.",
         "No bridge found on the network. Enter its IP address instead.": "Ağda köprü bulunamadı. IP adresini elle girebilirsin.",
-        "Screen sync needs Screen Recording access. Allow HueMenubar in System Settings > Privacy & Security > Screen & System Audio Recording, then reopen the app.":
-            "Ekran senkronu için Ekran Kaydı izni gerekiyor. Sistem Ayarları > Gizlilik ve Güvenlik > Ekran ve Sistem Sesi Kaydı'ndan HueMenubar'a izin ver, sonra uygulamayı yeniden aç.",
+        "Screen sync needs Screen Recording access. Allow Glowdesk in System Settings > Privacy & Security > Screen & System Audio Recording, then reopen the app.":
+            "Ekran senkronu için Ekran Kaydı izni gerekiyor. Sistem Ayarları > Gizlilik ve Güvenlik > Ekran ve Sistem Sesi Kaydı'ndan Glowdesk'e izin ver, sonra uygulamayı yeniden aç.",
         "%@ has no color lights.": "%@ içinde renkli lamba yok.", "Couldn't read the screen: %@": "Ekran okunamadı: %@",
         "Couldn't change Open at Login: %@": "Girişte açılma ayarlanamadı: %@",
         "The bridge no longer recognizes this Mac. Pair again in Settings.": "Köprü bu Mac'i artık tanımıyor. Ayarlardan yeniden eşleştir.",

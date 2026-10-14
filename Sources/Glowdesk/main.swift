@@ -106,7 +106,7 @@ enum MenuBarIcon {
     private func updateIcon() {
         statusItem.button?.image = MenuBarIcon.image(on: store.connected && store.anyOn, syncing: store.syncing)
         statusItem.button?.appearsDisabled = !store.connected && store.isPaired
-        statusItem.button?.setAccessibilityLabel(store.connected ? "HueMenubar, " + (store.anyOn ? t("Lights on") : t("Lights off")).lowercased() : "HueMenubar")
+        statusItem.button?.setAccessibilityLabel(store.connected ? "Glowdesk, " + (store.anyOn ? t("Lights on") : t("Lights off")).lowercased() : "Glowdesk")
         statusItem.button?.toolTip = store.connected ? t("Scroll to dim or brighten your lights") : nil
     }
 
@@ -128,10 +128,10 @@ enum MenuBarIcon {
         guard let button = statusItem.button else { return }
         hide()
         let menu = NSMenu()
-        menu.addItem(withTitle: t("About HueMenubar"), action: #selector(showAbout), keyEquivalent: "").target = self
+        menu.addItem(withTitle: t("About Glowdesk"), action: #selector(showAbout), keyEquivalent: "").target = self
         menu.addItem(withTitle: t("Buy me a coffee"), action: #selector(openCoffee), keyEquivalent: "").target = self
         menu.addItem(.separator())
-        menu.addItem(withTitle: t("Quit HueMenubar"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        menu.addItem(withTitle: t("Quit Glowdesk"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         menu.popUp(positioning: nil, at: NSPoint(x: 0, y: button.bounds.height + 5), in: button)
     }
 
@@ -149,7 +149,7 @@ enum MenuBarIcon {
             .link: Self.coffeeURL, .font: NSFont.systemFont(ofSize: 12, weight: .semibold),
         ]))
         text.addAttribute(.paragraphStyle, value: paragraph, range: NSRange(location: 0, length: text.length))
-        let options: [NSApplication.AboutPanelOptionKey: Any] = [.applicationName: "HueMenubar", .credits: text]
+        let options: [NSApplication.AboutPanelOptionKey: Any] = [.applicationName: "Glowdesk", .credits: text]
         NSApp.activate(ignoringOtherApps: true)
         NSApp.orderFrontStandardAboutPanel(options: options)
     }
@@ -187,7 +187,7 @@ enum MenuBarIcon {
 let app = NSApplication.shared
 if CommandLine.arguments.contains("--help") {
     print("""
-    HueMenubar — Philips Hue lights in your Mac menu bar
+    Glowdesk — Philips Hue lights in your Mac menu bar
 
     Open the app normally and pair your bridge in Settings.
     --background   Start without showing the panel.
@@ -205,6 +205,7 @@ if CommandLine.arguments.contains("--help") {
     print("--snapshot is only available in debug builds.")
     #endif
 } else {
+    LegacyMigration.run()
     let delegate = MainActor.assumeIsolated { AppDelegate() }
     app.delegate = delegate
     withExtendedLifetime(delegate) { app.run() }

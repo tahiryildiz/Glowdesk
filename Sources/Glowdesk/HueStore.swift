@@ -75,7 +75,7 @@ import ServiceManagement
         let savedLanguage = AppLanguage(rawValue: defaults.string(forKey: "hue.language") ?? "") ?? .system
         language = savedLanguage
         L10n.language = L10n.resolve(savedLanguage)
-        let directory = dataDirectory ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("local.HueMenubar")
+        let directory = dataDirectory ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("Glowdesk")
         journal = UsageJournal(url: directory.appendingPathComponent("usage.json"))
     }
 
@@ -493,7 +493,7 @@ import ServiceManagement
         guard !syncing, let groupID = syncGroupID, let group = groups.first(where: { $0.id == groupID }), let client else { return }
         if !CGPreflightScreenCaptureAccess() {
             CGRequestScreenCaptureAccess()
-            error = t("Screen sync needs Screen Recording access. Allow HueMenubar in System Settings > Privacy & Security > Screen & System Audio Recording, then reopen the app.")
+            error = t("Screen sync needs Screen Recording access. Allow Glowdesk in System Settings > Privacy & Security > Screen & System Audio Recording, then reopen the app.")
             return
         }
         let targets = lights(in: group).filter(\.supportsColor)

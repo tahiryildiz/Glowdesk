@@ -1,6 +1,6 @@
-<p align="center"><img src="Assets/AppIcon-1024.png" width="128" alt="HueMenubar icon"></p>
+<p align="center"><img src="Assets/AppIcon-1024.png" width="128" alt="Glowdesk icon"></p>
 
-# HueMenubar
+# Glowdesk
 
 Your Philips Hue lights in the macOS menu bar. Each room is a fader, like a lighting desk: drag to dim, tap to switch, and the fader fills with the room's actual light color.
 
@@ -39,7 +39,7 @@ Also:
 
 ```sh
 bash scripts/build.sh
-open dist/HueMenubar.app
+open dist/Glowdesk.app
 ```
 
 You can move the app to `/Applications`. It is signed locally and not notarized, so macOS may ask you to confirm the first time you open it.
@@ -58,11 +58,11 @@ The first time you start it, macOS asks for **Screen & System Audio Recording** 
 
 ## Support
 
-If HueMenubar brightens your desk, you can [buy me a coffee](https://buymeacoffee.com/tahiryildiz). The link is also in About and in the right-click menu.
+If Glowdesk brightens your desk, you can [buy me a coffee](https://buymeacoffee.com/tahiryildiz). The link is also in About and in the right-click menu.
 
 ## Privacy
 
-No analytics, accounts or cloud services. All traffic goes directly to your bridge on the local network. Preferences live in macOS preferences; history lives in `~/Library/Application Support/local.HueMenubar/`.
+No analytics, accounts or cloud services. All traffic goes directly to your bridge on the local network. Preferences live in macOS preferences; history lives in `~/Library/Application Support/Glowdesk/`.
 
 ## Offline checks
 
@@ -70,12 +70,12 @@ No bridge needed:
 
 ```sh
 bash scripts/build.sh
-dist/HueMenubar.app/Contents/MacOS/HueMenubar --self-check
+dist/Glowdesk.app/Contents/MacOS/Glowdesk --self-check
 ```
 
-Debug builds can also render every tab with demo data: `swift run HueMenubar --snapshot <folder>`.
+Debug builds can also render every tab with demo data: `swift run Glowdesk --snapshot <folder>`.
 
-To troubleshoot, launch with `open dist/HueMenubar.app --args --log`. Commands, replies and live events go to `~/Library/Application Support/local.HueMenubar/debug.log`. The app key is never written.
+To troubleshoot, launch with `open dist/Glowdesk.app --args --log`. Commands, replies and live events go to `~/Library/Application Support/Glowdesk/debug.log`. The app key is never written.
 
 ## Technical notes
 

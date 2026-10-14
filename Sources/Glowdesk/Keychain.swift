@@ -3,14 +3,16 @@ import Security
 
 /// Bridge secrets live in the login Keychain, keyed by the bridge ID so an IP change keeps the pairing.
 enum KeychainItem: String {
-    case appKey = "local.HueMenubar"
-    case certificate = "local.HueMenubar.Certificate"
+    case appKey = "com.tahiryildiz.glowdesk"
+    case certificate = "com.tahiryildiz.glowdesk.certificate"
 
     private func query(_ account: String) -> [String: Any] {
         [kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: rawValue, kSecAttrAccount as String: account.lowercased()]
     }
-    func read(_ account: String) -> String? {
-        var q = query(account)
+    func read(_ account: String) -> String? { Self.read(service: rawValue, account: account) }
+
+    static func read(service: String, account: String) -> String? {
+        var q: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: service, kSecAttrAccount as String: account.lowercased()]
         q[kSecReturnData as String] = true
         q[kSecMatchLimit as String] = kSecMatchLimitOne
         var result: CFTypeRef?
