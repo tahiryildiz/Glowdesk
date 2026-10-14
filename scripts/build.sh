@@ -14,7 +14,7 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp "$BUILD_ROOT/.build/release/Glowdesk" "$APP/Contents/MacOS/Glowdesk"
 strip -S "$APP/Contents/MacOS/Glowdesk"
 cp "$PROJECT_ROOT/Assets/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
-cat > "$APP/Contents/Info.plist" <<'PLIST'
+cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
@@ -23,8 +23,8 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 <key>CFBundleIdentifier</key><string>com.tahiryildiz.glowdesk</string>
 <key>CFBundleName</key><string>Glowdesk</string>
 <key>CFBundleDisplayName</key><string>Glowdesk</string>
-<key>CFBundleVersion</key><string>1</string>
-<key>CFBundleShortVersionString</key><string>1.0</string>
+<key>CFBundleVersion</key><string>${VERSION:-1.0.0}</string>
+<key>CFBundleShortVersionString</key><string>${VERSION:-1.0.0}</string>
 <key>CFBundlePackageType</key><string>APPL</string>
 <key>CFBundleDevelopmentRegion</key><string>en</string>
 <key>CFBundleLocalizations</key><array><string>en</string><string>tr</string></array>

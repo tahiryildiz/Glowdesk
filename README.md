@@ -29,13 +29,17 @@ Also:
 - Changes made in the Hue app, on wall switches or by voice show up live.
 - Open at login is in Settings.
 
+## Install
+
+Download `Glowdesk-<version>.zip` from [Releases](https://github.com/tahiryildiz/Glowdesk/releases/latest), unzip it, move **Glowdesk** to Applications and open it. Releases are signed with a Developer ID and notarized by Apple.
+
 ## Requirements
 
 - macOS 14 or later
 - Xcode Command Line Tools (Swift 5.9+): `xcode-select --install`
 - A Hue Bridge (the square v2 bridge) on the same network as your Mac
 
-## Build and run
+## Build from source
 
 ```sh
 bash scripts/build.sh
@@ -63,6 +67,10 @@ If Glowdesk brightens your desk, you can [buy me a coffee](https://buymeacoffee.
 ## Privacy
 
 No analytics, accounts or cloud services. All traffic goes directly to your bridge on the local network. Preferences live in macOS preferences; history lives in `~/Library/Application Support/Glowdesk/`.
+
+## Releasing
+
+`VERSION=1.0.0 bash scripts/release.sh` builds, signs with your Developer ID, notarizes and staples the app, and writes `dist/Glowdesk-1.0.0.zip`. The script header lists the one-time setup.
 
 ## Offline checks
 
