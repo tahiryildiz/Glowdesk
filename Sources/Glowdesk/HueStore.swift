@@ -137,8 +137,10 @@ import ServiceManagement
 
     func connect() {
         guard !host.isEmpty, !bridgeID.isEmpty, let key = KeychainItem.appKey.read(bridgeID) else {
+            DebugLog.write("connect skipped: host \(host.isEmpty ? "missing" : "set"), bridge ID \(bridgeID.isEmpty ? "missing" : "set"), app key \(bridgeID.isEmpty ? "-" : KeychainItem.appKey.read(bridgeID) == nil ? "missing" : "found")")
             status = "Pairing needed"; return
         }
+        DebugLog.write("connect to \(host)")
         reconnectTask?.cancel(); connectTask?.cancel(); eventTask?.cancel()
         client?.close()
         let pin = KeychainItem.certificate.read(bridgeID)
@@ -155,6 +157,7 @@ import ServiceManagement
                 apply(config)
                 try await load(client)
                 guard !Task.isCancelled else { return }
+                DebugLog.write("connected: \(lights.count) lights, \(rooms.count) rooms")
                 connected = true; connecting = false; error = nil
                 status = "Connected"
                 lastUsageTick = Date()
@@ -162,6 +165,7 @@ import ServiceManagement
             } catch is CancellationError {
             } catch {
                 guard !Task.isCancelled else { return }
+                DebugLog.write("connect failed: \(String(describing: error))")
                 connecting = false; connected = false
                 handle(error)
                 scheduleReconnect(after: 15)

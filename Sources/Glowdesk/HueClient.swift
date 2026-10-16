@@ -108,6 +108,7 @@ final class HueClient: @unchecked Sendable {
         return data
     }
     private func translate(_ error: Error) -> Error {
+        DebugLog.write("request error: \(String(describing: error))")
         if pinner.rejected { return HueError.certificateChanged }
         if let url = error as? URLError {
             switch url.code {
