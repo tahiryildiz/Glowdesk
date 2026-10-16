@@ -121,6 +121,13 @@ import CoreGraphics
         store.nudgeAll(by: -500)
         try expect(store.litLights.allSatisfy { $0.brightness == 1 } && store.anyOn, "scrolling down dims to minimum without turning off")
 
+        // An unreachable bridge takes the panel offline instead of showing unconfirmed lights.
+        store.connected = true
+        store.handle(HueError.unreachable("192.168.1.20"))
+        try expect(!store.connected && store.status == "Offline" && store.error?.contains("192.168.1.20") == true,
+                   "unreachable bridge goes offline with a clear message")
+        store.error = nil
+
         // Icons chosen in the Hue app map to symbols that exist on this Mac.
         try expect(HueIcons.missing.isEmpty, "all mapped icons exist (missing: \(HueIcons.missing))")
         try expect(HueIcons.light("table_shade") == "lamp.table" && HueIcons.light("made_up") == "lightbulb" && HueIcons.room("kitchen") == "refrigerator",

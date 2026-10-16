@@ -131,8 +131,11 @@ enum HueError: LocalizedError {
     case unauthorized
     case linkButtonNotPressed
     case certificateChanged
+    /// The bridge didn't answer on the network (powered off, unplugged, or moved to another address).
+    case unreachable(String)
     var errorDescription: String? {
         switch self {
+        case .unreachable(let host): return t("Can't reach the Hue Bridge at %@. Make sure it's powered on and connected to your router.", host)
         case .message(let text): return text
         case .unauthorized: return t("The bridge no longer recognizes this Mac. Pair again in Settings.")
         case .linkButtonNotPressed: return t("Press the round button on top of the bridge.")

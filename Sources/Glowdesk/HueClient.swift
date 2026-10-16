@@ -112,7 +112,7 @@ final class HueClient: @unchecked Sendable {
         if let url = error as? URLError {
             switch url.code {
             case .timedOut, .cannotConnectToHost, .networkConnectionLost, .notConnectedToInternet, .cannotFindHost:
-                return HueError.message(t("Can't reach the bridge at %@. Is your Mac on the same network?", host))
+                return HueError.unreachable(host)
             default: break
             }
         }

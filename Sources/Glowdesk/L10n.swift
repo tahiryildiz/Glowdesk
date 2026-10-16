@@ -82,7 +82,7 @@ enum L10n {
             "Köprünün sertifikası değişmiş. Aynı köprü olduğundan eminsen Ayarlar'dan köprüyü unutup yeniden eşleştir.",
         "The bridge is getting commands too fast. Slow down a little.": "Köprüye çok hızlı komut gidiyor. Biraz yavaşla.",
         "The bridge returned HTTP %d.": "Köprü HTTP %d döndürdü.",
-        "Can't reach the bridge at %@. Is your Mac on the same network?": "%@ adresindeki köprüye ulaşılamıyor. Mac aynı ağda mı?",
+        "Can't reach the Hue Bridge at %@. Make sure it's powered on and connected to your router.": "%@ adresindeki Hue Bridge'e ulaşılamıyor. Köprünün açık ve modeme bağlı olduğundan emin ol.",
         "The bridge sent an unexpected reply.": "Köprüden beklenmeyen bir yanıt geldi.", "The bridge refused pairing.": "Köprü eşleştirmeyi reddetti.",
         "Couldn't open the live update stream (HTTP %d).": "Canlı güncelleme akışı açılamadı (HTTP %d).",
         "No display found.": "Ekran bulunamadı.",

@@ -165,6 +165,7 @@ import ServiceManagement
                 connecting = false; connected = false
                 handle(error)
                 scheduleReconnect(after: 15)
+                if case HueError.unreachable = error { await findMovedBridge() }
             }
         }
     }
@@ -304,6 +305,18 @@ import ServiceManagement
         lights = [:]; rooms = []; zones = []; home = nil; grouped = [:]; devices = [:]; scenes = []
         status = "Not connected"
         notice = t("Pairing removed. You can also revoke this Mac's access in the Hue app.")
+    }
+
+    /// If the bridge got a new address from the router, find it again by its ID and reconnect there.
+    private func findMovedBridge() async {
+        let id = bridgeID.lowercased()
+        guard !id.isEmpty else { return }
+        let found = await BridgeDiscovery.search()
+        guard let match = found.first(where: { $0.bridgeID.lowercased() == id }), match.host != host, !connected else { return }
+        DebugLog.write("bridge moved from \(host) to \(match.host)")
+        host = match.host
+        error = nil
+        connect()
     }
 
     func discover() {
@@ -585,6 +598,13 @@ import ServiceManagement
         case HueError.unauthorized, HueError.certificateChanged:
             eventTask?.cancel(); connected = false; connecting = false
             status = "Pair again"
+        case HueError.unreachable:
+            // Don't keep showing lights we can't confirm: go offline and keep trying in the background.
+            throttle.cancelAll()
+            if connected { connected = false; tickUsage(); lastUsageTick = nil }
+            connecting = false
+            status = "Offline"
+            scheduleReconnect(after: 10)
         default: break
         }
         if (error as? URLError)?.code == .cancelled { return }
